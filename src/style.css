@@ -1,0 +1,773 @@
+/* === Reset & Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+  background-size: 400% 400%;
+  animation: bg-gradient 20s ease infinite;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+  color: #222;
+}
+
+/* Background gradient animation */
+@keyframes bg-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === Root Container === */
+.poster-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  animation: fade-in 1.2s ease-in-out;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Header === */
+.poster-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 0 1rem;
+}
+
+.poster-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.3;
+  background: linear-gradient(90deg, #0072ff, #00c6ff, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  animation: glowText 3s ease-in-out infinite alternate;
+  margin-bottom: 0.8rem;
+}
+
+@keyframes glowText {
+  from { text-shadow: 0 0 10px rgba(0, 198, 255, 0.4); }
+  to   { text-shadow: 0 0 20px rgba(0, 198, 255, 0.8); }
+}
+
+.poster-title span {
+  font-weight: 900;
+}
+
+/* Subtitle */
+.poster-sub {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: #333;
+  margin-top: 0.6rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+  line-height: 1.6;
+}
+
+/* Accent highlights inside subtitle */
+.poster-sub strong {
+  color: #ff6f61;
+}
+
+.poster-sub span {
+  font-weight: 600;
+}
+
+.poster-sub span:nth-child(1) {
+  color: #2563eb; /* blue */
+}
+
+.poster-sub span:nth-child(2) {
+  color: #16a34a; /* green */
+}
+
+.poster-sub span:nth-child(3) {
+  color: #f59e0b; /* amber */
+}
+
+
+/* === Ticket Section (Modern UI) === */
+/* === Ticket Section (Pro-Level Modern UI) === */
+.ticket-section {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  perspective: 1000px;
+}
+
+/* Default (desktop & tablet) */
+.ticket-box {
+  position: relative;
+  background: linear-gradient(135deg, #ffe5ec, #f3f8ff, #e5faff);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  animation: floatTicket 6s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes floatTicket {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* 📱 Mobile adjustments */
+@media (max-width: 600px) {
+  .ticket-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1.2rem;
+
+    /* Softer gradient for small screens */
+    background: linear-gradient(135deg, #f9f9f9, #fdfdfd, #f3f8ff);
+    animation: none; /* optional: remove float for smoother scroll */
+  }
+}
+/* Shake animation */
+@keyframes ticketShake {
+  0%   { transform: rotate(0deg) scale(1); }
+  20%  { transform: rotate(2deg) scale(1.01); }
+  40%  { transform: rotate(-2deg) scale(1.01); }
+  60%  { transform: rotate(1deg) scale(1.01); }
+  80%  { transform: rotate(-1deg) scale(1.01); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+/* Apply on hover */
+.ticket-box:hover {
+  animation: ticketShake 0.6s ease-in-out;
+}
+
+
+
+/* Hover 3D tilt */
+.ticket-box:hover {
+  transform: rotateX(5deg) rotateY(-5deg) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+/* === Ticket cut-out edges === */
+.ticket-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(135deg, #fff5f7, #fdf2ff, #f5faff);
+  border-radius: 20px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+
+.ticket-box::before,
+.ticket-box::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: #ececec;
+  border-radius: 50%;
+  z-index: 2;
+}
+.ticket-box::before { left: -20px; }
+.ticket-box::after { right: -20px; }
+
+/* Perforated divider */
+.ticket-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 65%;
+  width: 2px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #bbb,
+    #bbb 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  z-index: 1;
+}
+
+/* ensure .ticket-box is relative */
+.ticket-box { position: relative; overflow: hidden; }
+
+/* base styles for bg icons */
+.ticket-box .bg-icon {
+  position: absolute;
+  width: clamp(28px, 4vw, 50px); /* responsive size */
+  opacity: 0.2;                  /* subtle watermark */
+  pointer-events: none;
+  z-index: 2;                     /* keep below main content (z-index:3) */
+  transition: transform 0.35s ease, opacity 0.25s ease;
+  will-change: transform;
+}
+
+/* In-between corner positions (20% / 80%) */
+.bg-icon.house  { left: 40%; top: 80%; transform: translate(-50%, -50%); }
+.bg-icon.gift   { left: 65%; top: 75%; transform: translate(-50%, -50%); }
+.bg-icon.ticket { left: 60%; top: 20%; transform: translate(-50%, -50%); }
+.bg-icon.trophy { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+/* subtle hover/interaction (optional) */
+.ticket-box:hover .bg-icon { opacity: 0.18; }
+.bg-icon:hover { transform: translate(-50%, -50%) scale(1.08); opacity: 0.22; }
+
+/* tweak for very small screens so icons don't overlap text */
+@media (max-width: 480px) {
+  .ticket-box .bg-icon { width: clamp(20px, 8vw, 36px); opacity: 0.12; }
+  .bg-icon.house, .bg-icon.gift { top: 16%; }
+  .bg-icon.ticket, .bg-icon.trophy { top: 84%; }
+  .bg-icon.house, .bg-icon.ticket  { left: 18%; }
+  .bg-icon.gift,  .bg-icon.trophy  { left: 82%; }
+}
+
+
+
+/* Floating icons */
+.floating-icon {
+  position: absolute;
+  font-size: clamp(18px, 3vw, 30px);
+  opacity: 0.6;
+  animation: float 4s infinite ease-in-out;
+  z-index: 4;
+}
+@keyframes float {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-10px) rotate(15deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+/* Left side content */
+.ticket-left {
+  flex: 1.2;
+  position: relative;
+  z-index: 3;
+}
+
+/* Base styling (keep your old styles) */
+.ticket-price {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ff3d00;
+  text-shadow: 0 0 12px rgba(255,61,0,0.4);
+  display: inline-block; /* important for transform animations */
+  opacity: 0;
+  animation: slideIn 1.5s ease forwards, pricePulse 2.5s ease-in-out infinite alternate;
+}
+
+/* Slide-in from left */
+@keyframes slideIn {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(15%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Gentle scaling pulse after slide */
+@keyframes pricePulse {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+
+.ticket-note {
+  font-size: 1.05rem;
+  margin-top: 0.6rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.ticket-trust {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #28a745;
+  background: rgba(40,167,69,0.15);
+  padding: 0.35rem 1rem;
+  border-radius: 10px;
+  box-shadow: inset 0 0 8px rgba(40,167,69,0.25);
+  animation: trustBlink 2s infinite alternate;
+}
+@keyframes trustBlink {
+  0% { background: rgba(40,167,69,0.15); }
+  100% { background: rgba(40,167,69,0.25); }
+}
+.ticket-trust svg {
+  margin-left: 0.25rem;
+  animation: bounceIcon 3s infinite;
+}
+@keyframes bounceIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Stats */
+.ticket-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.ticket-stats div {
+  background: linear-gradient(145deg, #ffffff, #f1f1f1);
+  padding: 1rem 1.4rem;
+  border-radius: 14px;
+  text-align: center;
+  min-width: 120px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.ticket-stats div:hover {
+  transform: scale(1.08) rotate(-1deg);
+  background: linear-gradient(135deg, #fdfdfd, #f8f8f8);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+}
+
+/* Right side content */
+.ticket-right {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 3;
+}
+
+/* Buy button */
+.btn-buy {
+  background: linear-gradient(135deg, #00c853, #009624);
+  color: #fff;
+  padding: 1rem 1.8rem;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 24px rgba(0,200,83,0.35);
+}
+.btn-buy:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #1de9b6, #00c853);
+  box-shadow: 0 12px 28px rgba(0,200,83,0.55);
+}
+
+/* Info button */
+.btn-info {
+  background: linear-gradient(135deg, #448aff, #2962ff);
+  color: #fff;
+  padding: 0.85rem 1.4rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 18px rgba(41,98,255,0.35);
+}
+.btn-info:hover {
+  transform: scale(1.06);
+  background: linear-gradient(135deg, #82b1ff, #2962ff);
+  box-shadow: 0 10px 28px rgba(41,98,255,0.55);
+}
+
+/* Pulse animation */
+.pulse {
+  animation: pulse-anim 1.4s;
+}
+@keyframes pulse-anim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .ticket-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+  .ticket-divider { display: none; }
+  .ticket-right {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+}
+@media (max-width: 600px) {
+  .ticket-price { font-size: 2rem; }
+  .ticket-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .ticket-stats div { width: 90%; }
+  .ticket-box .bg-icon { width: 20px; height: 20px; }
+}
+
+
+/* Floating icons in corners */
+.floating-icon {
+  position: absolute;
+  font-size: clamp(22px, 3vw, 34px); /* responsive size */
+  color: #ff7043; /* you can adjust per icon with inline style */
+  opacity: 0.7;
+  animation: float 4s infinite ease-in-out;
+  z-index: 4;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.floating-icon:hover {
+  transform: scale(1.2) rotate(5deg);
+  color: #ff3d00; /* highlight color */
+}
+
+.floating-icon.top-left { top: 12px; left: 12px; color: #43a047; }   /* green home */
+.floating-icon.top-right { top: 12px; right: 12px; color: #ff9800; }  /* orange gift */
+.floating-icon.bottom-left { bottom: 12px; left: 12px; color: #2979ff; } /* blue trophy */
+.floating-icon.bottom-right { bottom: 12px; right: 12px; color: #9c27b0; } /* purple scroll */
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-6px) rotate(6deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+
+
+
+/* === Cards Row === */
+.cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem auto 3rem auto;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.prize-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  flex: 1 1 300px;
+  max-width: 340px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.prize-card:hover {
+  transform: translateY(-6px);
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  background: #ff9800;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  font-weight: 700;
+  border-radius: 50%;
+  font-size: 0.9rem;
+}
+
+.card-cta {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #007bff;
+  font-size: 1rem;
+}
+
+/* Shake animation */
+.shake {
+  animation: shake-anim 0.9s;
+}
+@keyframes shake-anim {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}
+
+/* === Info Section === */
+/* Info section base styling */
+.info-section {
+  margin: 4rem auto;
+  text-align: center;
+  max-width: 1100px;
+  padding: 2rem;
+}
+
+.info-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #2c2c54;
+}
+
+.info-sub {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2.5rem;
+}
+
+/* Info cards layout */
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Each card base */
+.info-card {
+  position: relative;
+  flex: 1 1 420px;
+  padding: 2rem;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  z-index: 0;
+  transition: transform 0.3s ease;
+}
+
+/* Animated border using ::before */
+.info-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px; /* border thickness */
+  border-radius: 20px;
+  background: linear-gradient(
+    270deg,
+    #ff512f,
+    #dd2476,
+    #24c6dc,
+    #514a9d,
+    #ff512f
+  );
+  background-size: 400% 400%;
+  animation: borderMove 8s linear infinite;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+/* Hover lift effect */
+.info-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Icon inside card */
+.info-icon {
+  font-size: 2.2rem;
+  color: #ff512f;
+  margin-bottom: 1rem;
+}
+
+/* Keyframes for gradient motion */
+@keyframes borderMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.contact-list,
+.legal-list {
+  list-style: none;
+  margin-top: 1rem;
+  padding-left: 0;
+}
+
+.contact-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+.muted.small {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 1rem;
+}
+
+/* === Footer === */
+.poster-footer {
+  margin-top: 3rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.trust {
+  background: #222;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+/* === Responsive Design === */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .poster-title {
+    font-size: 2.2rem;
+  }
+  .ticket-box {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .ticket-right {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 600px) {
+  .poster-title {
+    font-size: 1.8rem;
+  }
+  .poster-sub {
+    font-size: 1rem;
+  }
+  .ticket-price {
+    font-size: 1.6rem;
+  }
+  .ticket-stats {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  .ticket-stats div {
+    min-width: unset;
+    width: 80%;
+  }
+  .prize-card {
+    max-width: 100%;
+  }
+}
+/* === Animated Circles (floating blobs) === */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #7dd3fc, #2563eb);
+  opacity: 0.15;
+  animation: floatCircle 12s infinite ease-in-out alternate;
+  z-index: 0;
+}
+
+.circle:nth-child(1) {
+  width: 180px;
+  height: 180px;
+  top: 10%;
+  left: 8%;
+  animation-delay: 0s;
+}
+.circle:nth-child(2) {
+  width: 140px;
+  height: 140px;
+  bottom: 15%;
+  right: 10%;
+  animation-delay: 2s;
+}
+.circle:nth-child(3) {
+  width: 220px;
+  height: 220px;
+  top: 30%;
+  right: 25%;
+  background: radial-gradient(circle at 30% 30%, #a5f3fc, #06b6d4);
+  animation-delay: 4s;
+}
+.circle:nth-child(4) {
+  width: 100px;
+  height: 100px;
+  bottom: 25%;
+  left: 20%;
+  background: radial-gradient(circle at 30% 30%, #c4b5fd, #7c3aed);
+  animation-delay: 6s;
+}
+
+@keyframes floatCircle {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-25px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* === Sparkles (twinkling stars) === */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.7);
+  animation: twinkle 2s infinite ease-in-out;
+  z-index: 0;
+}
+
+.sparkle:nth-child(5)  { top: 20%; left: 30%; animation-delay: 0s; }
+.sparkle:nth-child(6)  { top: 70%; left: 25%; animation-delay: 0.5s; }
+.sparkle:nth-child(7)  { top: 40%; right: 20%; animation-delay: 1s; }
+.sparkle:nth-child(8)  { bottom: 25%; left: 50%; animation-delay: 1.5s; }
+.sparkle:nth-child(9)  { top: 15%; right: 35%; animation-delay: 2s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50%      { opacity: 1; transform: scale(1.2); }
+}
