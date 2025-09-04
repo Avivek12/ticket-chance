@@ -69,7 +69,7 @@ export default function Poster() {
           </span>
         </h1>
         <p className="poster-sub">
-          Buy a ticket for <strong>₹1299/-</strong> — <span style={{ color: "#007bff", fontWeight: "600" }}>
+          Buy a ticket for <strong>₹999/-</strong> — <span style={{ color: "#007bff", fontWeight: "600" }}>
             Transparent Live Draw
           </span>, <span style={{ color: "#28a745" }}>
             Notarized & Police-Verified Transfer
