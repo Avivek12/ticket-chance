@@ -463,26 +463,41 @@ export default function Poster() {
         </h2>
 
         {/* Tabs */}
-        <div className="gift-tabs" style={{ textAlign: "center", marginBottom: "2rem" }}>
-          {Object.keys(giftCategories).map((cat) => (
-            <button
-              key={cat}
-              className={`gift-tab ${activeCategory === cat ? "active" : ""}`}
-              onClick={() => setActiveCategory(cat)}
-              style={{
-                padding: "0.5rem 1rem",
-                margin: "0 0.5rem",
-                borderRadius: "5px",
-                border: activeCategory === cat ? "2px solid #4CAF50" : "1px solid #ccc",
-                background: activeCategory === cat ? "#e8f5e9" : "#fff",
-                cursor: "pointer",
-                fontWeight: activeCategory === cat ? "bold" : "normal"
-              }}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        <div className="gift-tabs-container" style={{ overflowX: "auto", padding: "0 1rem", marginBottom: "2rem" }}>
+  <div
+    className="gift-tabs"
+    style={{
+      display: "flex",
+      gap: "0.5rem",
+      justifyContent: "center",
+      flexWrap: "nowrap", // keep in one row, scrollable if needed
+      minWidth: "max-content", // allow scrolling
+    }}
+  >
+    {Object.keys(giftCategories).map((cat) => (
+      <button
+        key={cat}
+        className={`gift-tab ${activeCategory === cat ? "active" : ""}`}
+        onClick={() => setActiveCategory(cat)}
+        style={{
+          flex: "0 0 auto", // prevent shrinking
+          padding: "0.5rem 1rem",
+          borderRadius: "25px",
+          border: activeCategory === cat ? "2px solid #4CAF50" : "1px solid #ccc",
+          background: activeCategory === cat ? "#e8f5e9" : "#fff",
+          cursor: "pointer",
+          fontWeight: activeCategory === cat ? "bold" : "500",
+          transition: "all 0.3s ease",
+          whiteSpace: "nowrap", // prevent text wrapping
+          boxShadow: activeCategory === cat ? "0 2px 8px rgba(76,175,80,0.3)" : "none",
+        }}
+      >
+        {cat}
+      </button>
+    ))}
+  </div>
+</div>
+
 
         {/* Gifts Grid */}
         <div className="gift-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "1.5rem" }}>
