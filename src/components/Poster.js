@@ -499,33 +499,24 @@ export default function Poster() {
 </div>
 
 
-        {/* Gifts Grid */}
-        <div className="gift-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "1.5rem" }}>
-          {giftCategories[activeCategory].map((gift, idx) => (
-            <div
-              key={idx}
-              className="gift-card"
-              style={{
-                background: "#fff",
-                padding: "1rem",
-                borderRadius: "10px",
-                boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-                textAlign: "center"
-              }}
-            >
-              <img
-                                src={gift.img || "https://via.placeholder.com/150?text=No+Image"}
-                alt={gift.name}
-                className="gift-img"
-                style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "8px", marginBottom: "1rem" }}
-              />
-              <h3 style={{ fontSize: "1.1rem", margin: "0.5rem 0" }}>{gift.name}</h3>
-              <p style={{ color: "#4CAF50", fontWeight: "bold", margin: "0.25rem 0" }}>{gift.price}</p>
-              <p style={{ fontSize: "0.9rem", color: "#555" }}>{gift.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+
+  {/* Gifts Grid */}
+  <div className="gift-grid">
+    {giftCategories[activeCategory].map((gift, idx) => (
+      <div key={idx} className="gift-card">
+        <img
+          src={gift.img || "https://via.placeholder.com/150?text=No+Image"}
+          alt={gift.name}
+          className="gift-img"
+        />
+        <h3>{gift.name}</h3>
+        <p className="gift-price">{gift.price}</p>
+        <p className="gift-desc">{gift.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
 
       {/* Images Section */}
       <section className="images-section" style={{ padding: "2rem", background: "#f9f9f9" }}>
